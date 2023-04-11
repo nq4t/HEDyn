@@ -18,7 +18,8 @@ v4=$(curl -s http://freemyip.com/checkip)
 # v4=$(curl -s http://192.168.1.1/getv4.php) # This uses my scripts on pfSense
 
 # Pull IPv6 from interface - Pulls first non-local v6 from specified device
-v6=$(/sbin/ip -6 addr show dev $dev | awk '/inet6/ && !/fe80|::1/ {print $2}' | cut -f1 -d'/')
+v6=$(/sbin/ip -6 addr show dev $dev | awk '/inet6/ && !/fe80|::1/ {print $2}' | cut -f1 -d'/') # systems using 'ip'
+#v6=$(ifconfig $dev | awk '/inet6/ && !/fe80|::1/ {print $2}') # systems using 'ifconfig'
 
 # Commands for curl
 curl="curl -s -S -q -f https://dyn.dns.he.net/nic/update -d hostname=$hostname -d password=$APIkey"

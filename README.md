@@ -12,17 +12,19 @@ DMZ, you'll have to use an external service.
 ## Installation & Usage
 
 If you are using the pfSense IP Check Service, copy both the .sh and
-.php file in to /usr/local/www. It will be available at
+.php file in to /usr/local/www on pfSense. It will be available at:
 
 - https://[LAN.IP]/getv4.php
 - http://[LAN.IP]/getv4.php
 
-depending on if you use https or not. 
+depending on if you use https or not. Accessing this file does not
+require logging in to the admin panel.
 
-Copy hedyn.sh to your server using the hostname; then make a copy
-of it if you're updating/hosting multiple names. Edit the script
-with your hostname, APIKey, the device you want to use for IPv6,
-and which IPv4 check service you want to use. Add it to cron.
+Copy hedyn.sh to your server using the hostname; make copies for
+each hostname you want to update with your hostname, APIKey, the
+device you want to use for IPv6, and which IPv4 check service you
+want to use. Add it to cron. If using multiple, it's easiest to
+add commands to all scripts in to another script called by cron.
 
 The script will only update either v4 or v6 if the records don't
 match the machine's IP addresses.
@@ -38,6 +40,7 @@ is done at your own risk.
 
 ```
 10-APR-2023: Initial Version
+11-APR-2023: Mirror to Github. Add 'ifconfig' command
 ```
 
 ## License
